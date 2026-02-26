@@ -628,10 +628,13 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center gap-2 mb-6">
-                <div className="w-8 h-8 bg-[#fc5123] rounded-lg flex items-center justify-center text-white font-bold">
-                  F
+                <div className="w-14   h-14  rounded-lg flex items-center justify-center text-white font-bold">
+                   <img
+                className="w-full h-full object-contain rounded-lg shadow-lg shadow-orange-500/30 "
+                src="https://res.cloudinary.com/djprssm3o/image/upload/v1771942060/Login_p1rc6t.png"
+                alt="Fixee Logo"
+              ></img>
                 </div>
-                <span className="text-xl font-bold">Fixee</span>
               </div>
               <p className="text-gray-400 text-sm leading-relaxed">
                 {t.footer.description}
@@ -664,7 +667,7 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
               </ul>
             </div>
 
-            <div>
+            {/* <div>
               <h4 className="font-bold text-lg mb-4">{t.footer.servicesTitle}</h4>
               <ul className="space-y-2 text-gray-400 text-sm">
                 <li>
@@ -688,19 +691,20 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
                   </a>
                 </li>
               </ul>
-            </div>
+            </div> */}
 
             <div>
               <h4 className="font-bold text-lg mb-4">{t.footer.contact}</h4>
+              <ul className="space-y-2 text-gray-40">Liên hệ</ul>
               <ul className="space-y-2 text-gray-400 text-sm">
-                <li>{t.footer.hotline}</li>
-                <li>{t.footer.email}</li>
-                <li>{t.footer.address}</li>
+                <li>Hotline: 0389648022</li>
+                <li>Email: fixee@gmail.com</li>
+                <li>Địa chỉ: TP. Đà Nẵng, Việt Nam</li>
               </ul>
             </div>
           </div>
           <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
-            {t.footer.copyright}
+            © 2024 Fixee. All rights reserved.
           </div>
         </div>
       </footer>

@@ -5,6 +5,7 @@ import { CheckCircle2 } from "lucide-react";
 import { useAuth } from "@/features/auth/hooks/useAuth";
 import { handleApiError } from "@/utils/error.utils";
 import { toast } from "sonner";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface LoginProps {
   onShowSignUp: () => void;
@@ -12,12 +13,12 @@ interface LoginProps {
   onLoginSuccess: () => void;
   isModal?: boolean;
 }
-
 export function Login({
   onShowSignUp,
   onLoginSuccess,
   isModal = false,
 }: LoginProps) {
+  const { t } = useLanguage();
   const { login, isLoading } = useAuth();
   
   const [email, setEmail] = useState("");
@@ -71,6 +72,7 @@ export function Login({
       // Close modal and stay on landing page after 3 seconds
       setTimeout(() => {
         setShowSuccessModal(false);
+        onLoginSuccess(); // This just closes the login modal
       }, 3000);
     } catch (error) {
       // Error handling
