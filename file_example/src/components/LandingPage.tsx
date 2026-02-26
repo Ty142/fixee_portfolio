@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { AlertCircle, MapPin, Wrench, Wallet, Menu } from "lucide-react";
 import {

@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Login } from "./components/Login";
 import { SignUp } from "./components/SignUp";
 import { LandingPage } from "./components/LandingPage";
-import { DebugAPI } from "./components/DebugAPI";
 
 type Screen =
   | "landing"
@@ -18,8 +17,6 @@ type Screen =
 
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState<Screen>("landing");
-  const [userEmail, setUserEmail] = useState("");
-  const [selectedService, setSelectedService] = useState("");
 
   // Lock body scroll when modal is open
   useEffect(() => {
@@ -69,7 +66,7 @@ export default function App() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm overflow-y-auto"
-            onClick={(e) => {
+            onClick={(e: React.MouseEvent<HTMLDivElement>) => {
               if (e.target === e.currentTarget) closeAuthModal();
             }}
           >
@@ -119,9 +116,6 @@ export default function App() {
       </AnimatePresence>
 
       {/* Main App Screens */}
-      
-      {/* Debug API Component */}
-      {import.meta.env.DEV && <DebugAPI />}
     </>
   );
 }

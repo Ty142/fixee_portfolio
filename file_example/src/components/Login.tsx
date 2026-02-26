@@ -1,6 +1,6 @@
 import { useState } from "react";
 import svgPaths from "../imports/svg-2bxzb4qdc1";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 import { useAuth } from "@/features/auth/hooks/useAuth";
 import { handleApiError } from "@/utils/error.utils";
