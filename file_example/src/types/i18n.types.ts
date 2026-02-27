@@ -12,6 +12,7 @@ export interface TranslationKeys {
   // Hero Section
   hero: {
     badge: string;
+    h1: string;
     title1: string;
     title2: string;
     description: string;
@@ -134,5 +135,43 @@ export interface TranslationKeys {
   common: {
     minutes: string;
     averageTime: string;
+  };
+  
+  // SEO Content
+  seo: {
+    contentTitle: string;
+    whyChooseTitle: string;
+    servicesTitle: string;
+    coverageTitle: string;
+    howToUseTitle: string;
+    commitmentTitle: string;
+    paragraph1: string;
+    paragraph2: string;
+    paragraph3: string;
+    paragraph4: string;
+    paragraph5: string;
+    paragraph6: string;
+  };
+  
+  // FAQ
+  faq: {
+    title: string;
+    subtitle: string;
+    q1: string;
+    a1: string;
+    q2: string;
+    a2: string;
+    q3: string;
+    a3: string;
+    q4: string;
+    a4: string;
+    q5: string;
+    a5: string;
+    q6: string;
+    a6: string;
+    q7: string;
+    a7: string;
+    q8: string;
+    a8: string;
   };
 }

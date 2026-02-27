@@ -85,7 +85,7 @@ function PhoneDemo() {
             <img
               src="https://images.unsplash.com/photo-1620662892011-f5c2d523fae2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
               className="w-full h-full object-cover"
-              alt="Map"
+              alt="Bản đồ tìm thợ sửa xe lưu động gần bạn tại Đà Nẵng"
             />
 
             {/* Overlay UI */}
@@ -280,9 +280,7 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
                 {t.hero.badge}
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1f2024] leading-tight mb-6">
-                {t.hero.title1}
-                <br />
-                <span className="text-[#fc5123]">{t.hero.title2}</span>
+                {t.hero.h1}
               </h1>
               <p className="text-gray-600 text-lg sm:text-xl mb-8 leading-relaxed max-w-lg">
                 {t.hero.description}
@@ -318,7 +316,7 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
               <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white">
                 <img
                   src="https://images.unsplash.com/photo-1675034743126-0f250a5fee51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXIlMjBtZWNoYW5pYyUyMHJlcGFpciUyMHdvcmtzaG9wJTIwbW9kZXJufGVufDF8fHx8MTc3MDQzMTMxN3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                  alt="App Preview"
+                  alt="Sửa xe lưu động Đà Nẵng - Thợ sửa xe chuyên nghiệp đang sửa chữa xe máy tận nơi"
                   className="w-full h-[600px] object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-8">
@@ -589,6 +587,96 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
           {/* Background decoration */}
           <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-black/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+        </div>
+      </section>
+
+      {/* SEO Content Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <article className="prose prose-lg max-w-none">
+            <h2 className="text-3xl font-bold text-[#1f2024] mb-6">
+              {t.seo.contentTitle}
+            </h2>
+            
+            <div className="text-gray-700 leading-relaxed space-y-6">
+              <p>{t.seo.paragraph1}</p>
+              
+              <h3 className="text-2xl font-bold text-[#1f2024] mt-8 mb-4">
+                {t.seo.whyChooseTitle}
+              </h3>
+              <p>{t.seo.paragraph2}</p>
+              
+              <h3 className="text-2xl font-bold text-[#1f2024] mt-8 mb-4">
+                {t.seo.servicesTitle}
+              </h3>
+              <p>{t.seo.paragraph3}</p>
+              
+              <h3 className="text-2xl font-bold text-[#1f2024] mt-8 mb-4">
+                {t.seo.coverageTitle}
+              </h3>
+              <p>{t.seo.paragraph4}</p>
+              
+              <h3 className="text-2xl font-bold text-[#1f2024] mt-8 mb-4">
+                {t.seo.howToUseTitle}
+              </h3>
+              <p>{t.seo.paragraph5}</p>
+              
+              <h3 className="text-2xl font-bold text-[#1f2024] mt-8 mb-4">
+                {t.seo.commitmentTitle}
+              </h3>
+              <p>{t.seo.paragraph6}</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#1f2024] mb-4">
+              {t.faq.title}
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              {t.faq.subtitle}
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {[
+              { q: t.faq.q1, a: t.faq.a1 },
+              { q: t.faq.q2, a: t.faq.a2 },
+              { q: t.faq.q3, a: t.faq.a3 },
+              { q: t.faq.q4, a: t.faq.a4 },
+              { q: t.faq.q5, a: t.faq.a5 },
+              { q: t.faq.q6, a: t.faq.a6 },
+              { q: t.faq.q7, a: t.faq.a7 },
+              { q: t.faq.q8, a: t.faq.a8 },
+            ].map((faq, idx) => (
+              <details
+                key={idx}
+                className="bg-gray-50 rounded-2xl p-6 hover:bg-gray-100 transition-colors group"
+              >
+                <summary className="font-bold text-[#1f2024] cursor-pointer list-none flex items-center justify-between">
+                  <span className="text-lg">{faq.q}</span>
+                  <svg
+                    className="w-5 h-5 text-[#fc5123] transition-transform group-open:rotate-180"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </summary>
+                <p className="mt-4 text-gray-600 leading-relaxed">{faq.a}</p>
+              </details>
+            ))}
+          </div>
         </div>
       </section>
 
