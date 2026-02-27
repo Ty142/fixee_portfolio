@@ -5,6 +5,7 @@ import App from "./App.tsx";
 import "./index.css";
 import { AuthProvider } from "./features/auth/context/AuthContext";
 import { LanguageProvider } from "./context/LanguageContext";
+import { Analytics } from "@vercel/analytics/next"
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
@@ -12,6 +13,7 @@ createRoot(document.getElementById("root")!).render(
       <AuthProvider>
         <App />
         <Toaster position="top-right" richColors />
+        <Analytics/>
       </AuthProvider>
     </LanguageProvider>
   </BrowserRouter>
