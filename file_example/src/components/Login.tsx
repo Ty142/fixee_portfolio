@@ -1,6 +1,5 @@
 import { useState } from "react";
 import svgPaths from "../imports/svg-2bxzb4qdc1";
-import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 import { useAuth } from "@/features/auth/hooks/useAuth";
 import { handleApiError } from "@/utils/error.utils";
@@ -112,13 +111,9 @@ export function Login({
       }
     >
       {/* Success Modal */}
-      <AnimatePresence>
         {showSuccessModal && (
-          <motion.div
-            initial={{ opacity: 0, y: -100 }}
-            animate={{ opacity: 1, y: 20 }}
-            exit={{ opacity: 0, y: -100 }}
-            className={`fixed top-4 left-1/2 -translate-x-1/2 z-[60] bg-white rounded-xl sm:rounded-2xl shadow-2xl p-6 sm:p-8 max-w-md w-full mx-4 ${isModal ? "absolute" : "fixed"}`}
+          <div
+            className={`fixed top-4 left-1/2 -translate-x-1/2 z-[60] bg-white rounded-xl sm:rounded-2xl shadow-2xl p-6 sm:p-8 max-w-md w-full mx-4 animate-slideDown ${isModal ? "absolute" : "fixed"}`}
           >
             <div className="flex flex-col items-center text-center gap-4">
               <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-green-100 flex items-center justify-center">
@@ -136,34 +131,25 @@ export function Login({
               </div>
               {/* Progress bar */}
               <div className="w-full bg-gray-200 rounded-full h-1.5 overflow-hidden">
-                <motion.div
-                  initial={{ width: "0%" }}
-                  animate={{ width: "100%" }}
-                  transition={{ duration: 3, ease: "linear" }}
-                  className="h-full bg-gradient-to-r from-[#fc5123] to-[#ff6b4a]"
+                <div
+                  className="h-full bg-gradient-to-r from-[#fc5123] to-[#ff6b4a] animate-progress"
+                  style={{ animation: 'progressBar 3s linear forwards' }}
                 />
               </div>
             </div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
 
       {/* Main Container */}
-      <motion.div
-        initial={isModal ? { opacity: 0, scale: 0.95 } : { opacity: 0, y: 20 }}
-        animate={isModal ? { opacity: 1, scale: 1 } : { opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="w-full max-w-md mx-auto"
+      <div
+        className={`w-full max-w-md mx-auto ${isModal ? 'animate-scaleIn' : 'animate-slideUp'}`}
       >
         {/* Logo Section */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
+        <div
           className={
             isModal
-              ? "flex justify-center mb-4"
-              : "flex justify-center mb-8 sm:mb-12"
+              ? "flex justify-center mb-4 animate-fadeIn"
+              : "flex justify-center mb-8 sm:mb-12 animate-fadeIn"
           }
         >
           <div className="relative">
@@ -186,17 +172,14 @@ export function Login({
             </div>
             <div className="absolute inset-0 bg-white/20 rounded-2xl sm:rounded-3xl blur-2xl -z-10 scale-110" />
           </div>
-        </motion.div>
+        </div>
 
         {/* Login Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
+        <div
           className={
             isModal
-              ? "bg-white rounded-2xl shadow-2xl p-5 backdrop-blur-xl"
-              : "bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 backdrop-blur-xl"
+              ? "bg-white rounded-2xl shadow-2xl p-5 backdrop-blur-xl animate-fadeIn"
+              : "bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 backdrop-blur-xl animate-slideUp"
           }
         >
           {/* Welcome Text */}
@@ -222,11 +205,9 @@ export function Login({
           >
             {/* Email Field */}
             <div className="relative">
-              <motion.div
-                animate={{
-                  scale: emailFocused ? 1.02 : 1,
-                }}
-                transition={{ duration: 0.2 }}
+              <div
+                className="transition-transform duration-200"
+                style={{ transform: emailFocused ? 'scale(1.02)' : 'scale(1)' }}
               >
                 <input
                   type="email"
@@ -244,12 +225,10 @@ export function Login({
                       : "border-gray-200 bg-white hover:border-gray-300"
                   } ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
                 />
-              </motion.div>
+              </div>
               {emailFocused && !errors.email && (
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 w-2 h-2 bg-[#fc5123] rounded-full"
+                <div
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-2 h-2 bg-[#fc5123] rounded-full animate-scaleIn"
                 />
               )}
               {errors.email && (
@@ -259,11 +238,9 @@ export function Login({
 
             {/* Password Field */}
             <div className="relative">
-              <motion.div
-                animate={{
-                  scale: passwordFocused ? 1.02 : 1,
-                }}
-                transition={{ duration: 0.2 }}
+              <div
+                className="transition-transform duration-200"
+                style={{ transform: passwordFocused ? 'scale(1.02)' : 'scale(1)' }}
               >
                 <input
                   type={showPassword ? "text" : "password"}
@@ -281,7 +258,7 @@ export function Login({
                       : "border-gray-200 bg-white hover:border-gray-300"
                   } ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
                 />
-              </motion.div>
+              </div>
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
@@ -313,12 +290,10 @@ export function Login({
             </div>
 
             {/* Login Button */}
-            <motion.button
-              whileHover={!isLoading ? { scale: 1.02, y: -2 } : {}}
-              whileTap={!isLoading ? { scale: 0.98 } : {}}
+            <button
               type="submit"
               disabled={isLoading}
-              className={`w-full bg-gradient-to-r from-[#fc5123] to-[#ff6b4a] text-white font-semibold ${isModal ? "py-3 text-sm" : "py-3 sm:py-4 sm:text-base"} rounded-xl shadow-lg shadow-orange-300/50 hover:shadow-xl hover:shadow-orange-400/50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2`}
+              className={`w-full bg-gradient-to-r from-[#fc5123] to-[#ff6b4a] text-white font-semibold ${isModal ? "py-3 text-sm" : "py-3 sm:py-4 sm:text-base"} rounded-xl shadow-lg shadow-orange-300/50 hover:shadow-xl hover:shadow-orange-400/50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${!isLoading ? 'animate-hover-scale' : ''}`}
             >
               {isLoading ? (
                 <>
@@ -328,7 +303,7 @@ export function Login({
               ) : (
                 "Đăng nhập"
               )}
-            </motion.button>
+            </button>
 
             {/* Register Link */}
             <p className="text-center text-xs sm:text-sm text-gray-600">
@@ -344,20 +319,17 @@ export function Login({
           </form>
 
           {/* Divider */}
-        </motion.div>
+        </div>
 
         {/* Footer */}
         {!isModal && (
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-            className="text-center text-white/80 text-sm mt-6"
+          <p
+            className="text-center text-white/80 text-sm mt-6 animate-fadeIn"
           >
             Bằng việc tiếp tục, bạn đồng ý với Điều khoản & Chính sách bảo mật
-          </motion.p>
+          </p>
         )}
-      </motion.div>
+      </div>
     </div>
   );
 }

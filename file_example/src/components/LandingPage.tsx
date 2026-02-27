@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { useState } from "react";
 import { AlertCircle, MapPin, Wrench, Wallet, Menu } from "lucide-react";
 import {
@@ -41,11 +40,8 @@ function PhoneDemo() {
       <div className="rounded-[2rem] overflow-hidden w-full h-full bg-white relative">
         {/* Screen Content */}
         {!showMap ? (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="w-full h-full flex flex-col items-center justify-center bg-[#f5f5f5] p-6 text-center"
+          <div
+            className="w-full h-full flex flex-col items-center justify-center bg-[#f5f5f5] p-6 text-center animate-fadeIn"
           >
             <div className="w-20 h-20 bg-[#fc5123] rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg shadow-orange-500/30">
               <svg
@@ -75,20 +71,16 @@ function PhoneDemo() {
               {t.demo.findNearby}
             </p>
 
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            <button
               onClick={() => setShowMap(true)}
-              className="w-full bg-[#fc5123] text-white py-4 rounded-xl font-bold text-lg shadow-xl shadow-orange-500/20"
+              className="w-full bg-[#fc5123] text-white py-4 rounded-xl font-bold text-lg shadow-xl shadow-orange-500/20 animate-hover-scale"
             >
               {t.demo.findNearby}
-            </motion.button>
-          </motion.div>
+            </button>
+          </div>
         ) : (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="w-full h-full relative"
+          <div
+            className="w-full h-full relative animate-fadeIn"
           >
             <img
               src="https://images.unsplash.com/photo-1620662892011-f5c2d523fae2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
@@ -107,11 +99,8 @@ function PhoneDemo() {
             </div>
 
             {/* Pins */}
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.5, type: "spring" }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            <div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-scaleIn"
             >
               <div className="relative flex items-center justify-center">
                 <div className="w-32 h-32 bg-[#fc5123]/10 rounded-full animate-ping absolute"></div>
@@ -119,14 +108,11 @@ function PhoneDemo() {
                   <div className="w-2 h-2 bg-white rounded-full"></div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Mechanic Popups */}
-            <motion.div
-              initial={{ y: 100, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 1.5 }}
-              className="absolute bottom-4 left-4 right-4 bg-white p-3 rounded-xl shadow-lg flex items-center gap-3 z-20"
+            <div
+              className="absolute bottom-4 left-4 right-4 bg-white p-3 rounded-xl shadow-lg flex items-center gap-3 z-20 animate-slideUp"
             >
               <div className="w-10 h-10 bg-gray-200 rounded-full overflow-hidden shrink-0">
                 <img
@@ -148,7 +134,7 @@ function PhoneDemo() {
               <button className="bg-[#fc5123] text-white text-xs px-3 py-1.5 rounded-lg font-medium shrink-0">
                 Gọi
               </button>
-            </motion.div>
+            </div>
 
             <button
               onClick={() => setShowMap(false)}
@@ -168,7 +154,7 @@ function PhoneDemo() {
                 />
               </svg>
             </button>
-          </motion.div>
+          </div>
         )}
 
         {/* Home Indicator */}
@@ -289,11 +275,7 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
       <div className="relative pt-24 pb-16 sm:pt-32 sm:pb-24 lg:pb-32 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-            >
+            <div className="animate-slideUp">
               <div className="inline-block bg-orange-100 text-[#fc5123] px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
                 {t.hero.badge}
               </div>
@@ -328,13 +310,10 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
               </div>
 
               
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative"
+            <div
+              className="relative animate-slideUp"
             >
               <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white">
                 <img
@@ -377,14 +356,9 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
               </div>
 
               {/* Floating Elements */}
-              <motion.div
-                animate={{ y: [0, -20, 0] }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="absolute top-12 -left-12 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-3 max-w-[200px]"
+              <div
+                className="absolute top-12 -left-12 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-3 max-w-[200px] animate-float"
+                style={{ animation: 'float 4s ease-in-out infinite' }}
               >
                 <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
                   <svg
@@ -407,8 +381,8 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
                     {t.common.averageTime}
                   </p>
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -427,10 +401,9 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {services.map((service, idx) => (
-              <motion.div
+              <div
                 key={idx}
-                whileHover={{ y: -5 }}
-                className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center gap-4"
+                className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center gap-4 animate-hover-scale"
               >
                 <div className="w-20 h-20 bg-gray-50 rounded-2xl p-2">
                   <img
@@ -447,7 +420,7 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
                     {service.desc}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -561,13 +534,10 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
                   icon: Wallet,
                 },
               ].map((step, idx) => (
-                <motion.div
+                <div
                   key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.15 }}
-                  className="relative flex md:flex-col items-start md:items-center gap-6 md:gap-6"
+                  className="relative flex md:flex-col items-start md:items-center gap-6 md:gap-6 animate-slideUp"
+                  style={{ animationDelay: `${idx * 150}ms` }}
                 >
                   <div className="bg-white p-2 rounded-full ring-4 ring-white">
                     <div className="w-16 h-16 rounded-2xl bg-[#fff0e6] text-[#fc5123] flex items-center justify-center shrink-0 shadow-lg shadow-orange-500/10 border border-orange-100 relative z-10">
@@ -586,7 +556,7 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
                       {step.desc}
                     </p>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -642,7 +612,7 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
             </div>
 
             <div>
-              <h4 className="font-bold text-lg mb-4">{t.footer.aboutFixee}</h4>
+              <h4 className="font-bold text-lg mb-4 ">{t.footer.aboutFixee}</h4>
               <ul className="space-y-2 text-gray-400 text-sm">
                 <li>
                   <a href="#" className="hover:text-[#fc5123]">

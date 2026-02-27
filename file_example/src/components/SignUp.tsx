@@ -1,6 +1,5 @@
 import { useState } from "react";
 import svgPaths from "../imports/svg-86becjp7p7";
-import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, CheckCircle2 } from "lucide-react";
 import { useAuth } from "@/features/auth/hooks/useAuth";
 import { handleApiError } from "@/utils/error.utils";
@@ -172,13 +171,9 @@ export function SignUp({ onBackToLogin, isModal = false }: SignUpProps) {
       }
     >
       {/* Success Notification */}
-      <AnimatePresence>
         {showSuccess && (
-          <motion.div
-            initial={{ opacity: 0, y: -100 }}
-            animate={{ opacity: 1, y: 20 }}
-            exit={{ opacity: 0, y: -100 }}
-            className={`fixed top-4 left-1/2 -translate-x-1/2 z-[60] bg-white rounded-xl sm:rounded-2xl shadow-2xl p-4 sm:p-6 flex items-center gap-3 sm:gap-4 max-w-md w-full mx-4 ${isModal ? "absolute" : "fixed"}`}
+          <div
+            className={`fixed top-4 left-1/2 -translate-x-1/2 z-[60] bg-white rounded-xl sm:rounded-2xl shadow-2xl p-4 sm:p-6 flex items-center gap-3 sm:gap-4 max-w-md w-full mx-4 animate-slideDown ${isModal ? "absolute" : "fixed"}`}
           >
             <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-green-100 flex items-center justify-center shrink-0">
               <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6 text-green-600" />
@@ -191,26 +186,19 @@ export function SignUp({ onBackToLogin, isModal = false }: SignUpProps) {
                 Vui lòng đăng nhập để tiếp tục
               </p>
             </div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
 
       {/* Main Container */}
-      <motion.div
-        initial={isModal ? { opacity: 0, scale: 0.95 } : { opacity: 0, y: 20 }}
-        animate={isModal ? { opacity: 1, scale: 1 } : { opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="w-full max-w-md mx-auto"
+      <div
+        className={`w-full max-w-md mx-auto ${isModal ? 'animate-scaleIn' : 'animate-slideUp'}`}
       >
         {/* Logo Section */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
+        <div
           className={
             isModal
-              ? "flex justify-center mb-4"
-              : "flex justify-center mb-8 sm:mb-12"
+              ? "flex justify-center mb-4 animate-fadeIn"
+              : "flex justify-center mb-8 sm:mb-12 animate-fadeIn"
           }
         >
           <div className="relative">
@@ -233,17 +221,14 @@ export function SignUp({ onBackToLogin, isModal = false }: SignUpProps) {
             </div>
             <div className="absolute inset-0 bg-white/20 rounded-2xl sm:rounded-3xl blur-2xl -z-10 scale-110" />
           </div>
-        </motion.div>
+        </div>
 
         {/* Sign Up Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
+        <div
           className={
             isModal
-              ? "bg-white rounded-2xl shadow-2xl p-5 backdrop-blur-xl"
-              : "bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 backdrop-blur-xl"
+              ? "bg-white rounded-2xl shadow-2xl p-5 backdrop-blur-xl animate-fadeIn"
+              : "bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 backdrop-blur-xl animate-slideUp"
           }
         >
           {/* Back Button & Header */}
@@ -277,11 +262,9 @@ export function SignUp({ onBackToLogin, isModal = false }: SignUpProps) {
           >
             {/* Name Field */}
             <div className="relative">
-              <motion.div
-                animate={{
-                  scale: nameFocused ? 1.02 : 1,
-                }}
-                transition={{ duration: 0.2 }}
+              <div
+                className="transition-transform duration-200"
+                style={{ transform: nameFocused ? 'scale(1.02)' : 'scale(1)' }}
               >
                 <input
                   type="text"
@@ -299,12 +282,10 @@ export function SignUp({ onBackToLogin, isModal = false }: SignUpProps) {
                       : "border-gray-200 bg-white hover:border-gray-300"
                   } ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
                 />
-              </motion.div>
+              </div>
               {nameFocused && !errors.fullName && (
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 w-2 h-2 bg-[#fc5123] rounded-full"
+                <div
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-2 h-2 bg-[#fc5123] rounded-full animate-scaleIn"
                 />
               )}
               {errors.fullName && (
@@ -314,11 +295,9 @@ export function SignUp({ onBackToLogin, isModal = false }: SignUpProps) {
 
             {/* Phone Field */}
             <div className="relative">
-              <motion.div
-                animate={{
-                  scale: phoneFocused ? 1.02 : 1,
-                }}
-                transition={{ duration: 0.2 }}
+              <div
+                className="transition-transform duration-200"
+                style={{ transform: phoneFocused ? 'scale(1.02)' : 'scale(1)' }}
               >
                 <input
                   type="tel"
@@ -336,12 +315,10 @@ export function SignUp({ onBackToLogin, isModal = false }: SignUpProps) {
                       : "border-gray-200 bg-white hover:border-gray-300"
                   } ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
                 />
-              </motion.div>
+              </div>
               {phoneFocused && !errors.phoneNumber && (
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 w-2 h-2 bg-[#fc5123] rounded-full"
+                <div
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-2 h-2 bg-[#fc5123] rounded-full animate-scaleIn"
                 />
               )}
               {errors.phoneNumber && (
@@ -351,11 +328,9 @@ export function SignUp({ onBackToLogin, isModal = false }: SignUpProps) {
 
             {/* Email Field */}
             <div className="relative">
-              <motion.div
-                animate={{
-                  scale: emailFocused ? 1.02 : 1,
-                }}
-                transition={{ duration: 0.2 }}
+              <div
+                className="transition-transform duration-200"
+                style={{ transform: emailFocused ? 'scale(1.02)' : 'scale(1)' }}
               >
                 <input
                   type="email"
@@ -373,12 +348,10 @@ export function SignUp({ onBackToLogin, isModal = false }: SignUpProps) {
                       : "border-gray-200 bg-white hover:border-gray-300"
                   } ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
                 />
-              </motion.div>
+              </div>
               {emailFocused && !errors.email && (
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 w-2 h-2 bg-[#fc5123] rounded-full"
+                <div
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-2 h-2 bg-[#fc5123] rounded-full animate-scaleIn"
                 />
               )}
               {errors.email && (
@@ -388,11 +361,9 @@ export function SignUp({ onBackToLogin, isModal = false }: SignUpProps) {
 
             {/* Password Field */}
             <div className="relative">
-              <motion.div
-                animate={{
-                  scale: passwordFocused ? 1.02 : 1,
-                }}
-                transition={{ duration: 0.2 }}
+              <div
+                className="transition-transform duration-200"
+                style={{ transform: passwordFocused ? 'scale(1.02)' : 'scale(1)' }}
               >
                 <input
                   type={showPassword ? "text" : "password"}
@@ -410,7 +381,7 @@ export function SignUp({ onBackToLogin, isModal = false }: SignUpProps) {
                       : "border-gray-200 bg-white hover:border-gray-300"
                   } ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
                 />
-              </motion.div>
+              </div>
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
@@ -443,11 +414,9 @@ export function SignUp({ onBackToLogin, isModal = false }: SignUpProps) {
 
             {/* Confirm Password Field */}
             <div className="relative">
-              <motion.div
-                animate={{
-                  scale: confirmPasswordFocused ? 1.02 : 1,
-                }}
-                transition={{ duration: 0.2 }}
+              <div
+                className="transition-transform duration-200"
+                style={{ transform: confirmPasswordFocused ? 'scale(1.02)' : 'scale(1)' }}
               >
                 <input
                   type={showConfirmPassword ? "text" : "password"}
@@ -465,7 +434,7 @@ export function SignUp({ onBackToLogin, isModal = false }: SignUpProps) {
                       : "border-gray-200 bg-white hover:border-gray-300"
                   } ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
                 />
-              </motion.div>
+              </div>
               <button
                 type="button"
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
@@ -509,10 +478,8 @@ export function SignUp({ onBackToLogin, isModal = false }: SignUpProps) {
                 } ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
               >
                 {agreed && (
-                  <motion.svg
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    className="w-3 h-3 text-white"
+                  <svg
+                    className="w-3 h-3 text-white animate-scaleIn"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -523,7 +490,7 @@ export function SignUp({ onBackToLogin, isModal = false }: SignUpProps) {
                       strokeLinejoin="round"
                       d="M5 13l4 4L19 7"
                     />
-                  </motion.svg>
+                  </svg>
                 )}
               </button>
               <p className="text-xs text-gray-600 leading-relaxed">
@@ -545,14 +512,12 @@ export function SignUp({ onBackToLogin, isModal = false }: SignUpProps) {
             </div>
 
             {/* Sign Up Button */}
-            <motion.button
-              whileHover={!isLoading && agreed ? { scale: 1.02, y: -2 } : {}}
-              whileTap={!isLoading && agreed ? { scale: 0.98 } : {}}
+            <button
               type="submit"
               disabled={!agreed || isLoading}
               className={`w-full font-semibold ${isModal ? "py-3 text-sm" : "py-3 sm:py-4 sm:text-base"} rounded-xl shadow-lg transition-all duration-300 flex items-center justify-center gap-2 ${
                 agreed && !isLoading
-                  ? "bg-gradient-to-r from-[#fc5123] to-[#ff6b4a] text-white shadow-orange-300/50 hover:shadow-xl hover:shadow-orange-400/50"
+                  ? "bg-gradient-to-r from-[#fc5123] to-[#ff6b4a] text-white shadow-orange-300/50 hover:shadow-xl hover:shadow-orange-400/50 animate-hover-scale"
                   : "bg-gray-200 text-gray-400 cursor-not-allowed"
               }`}
             >
@@ -564,7 +529,7 @@ export function SignUp({ onBackToLogin, isModal = false }: SignUpProps) {
               ) : (
                 "Tạo tài khoản"
               )}
-            </motion.button>
+            </button>
 
             {/* Login Link */}
             <p className="text-center text-xs sm:text-sm text-gray-600">
@@ -579,20 +544,17 @@ export function SignUp({ onBackToLogin, isModal = false }: SignUpProps) {
               </button>
             </p>
           </form>
-        </motion.div>
+        </div>
 
         {/* Footer */}
         {!isModal && (
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-            className="text-center text-white/80 text-sm mt-6"
+          <p
+            className="text-center text-white/80 text-sm mt-6 animate-fadeIn"
           >
             Bằng việc đăng ký, bạn đồng ý với Điều khoản & Chính sách bảo mật
-          </motion.p>
+          </p>
         )}
-      </motion.div>
+      </div>
     </div>
   );
 }
