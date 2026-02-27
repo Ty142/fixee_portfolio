@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import { Login } from "./components/Login";
 import { SignUp } from "./components/SignUp";
 import { LandingPage } from "./components/LandingPage";
@@ -106,6 +107,7 @@ export default function App() {
       )}
 
       {/* Main App Screens */}
+      <Analytics />
     </>
   );
 }
