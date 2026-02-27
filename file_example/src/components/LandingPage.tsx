@@ -239,7 +239,7 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
                     <a
-                      href="#demo"
+                      href=""
                       className="w-full cursor-pointer flex items-center px-3 py-2.5 text-sm font-medium text-gray-700 hover:text-[#fc5123] hover:bg-orange-50 rounded-lg transition-colors"
                     >
                       {t.nav.experience}
