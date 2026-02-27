@@ -17,12 +17,14 @@ import { logError } from '@/utils/error.utils';
 // Configuration
 // ============================================================================
 
-const API_BASE_URL = import.meta.env.VITE_API_URL ;
+// Use environment variable with fallback to production URL
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://backend-fixee.onrender.com/api/v1';
 
 // Debug logging
 console.log('=== Axios Configuration ===');
-console.log('VITE_API_URL:', import.meta.env.VITE_API_URL);
-console.log('API_BASE_URL:', API_BASE_URL);
+console.log('VITE_API_URL (from env):', import.meta.env.VITE_API_URL);
+console.log('API_BASE_URL (final):', API_BASE_URL);
+console.log('Mode:', import.meta.env.MODE);
 console.log('==========================');
 
 /**
