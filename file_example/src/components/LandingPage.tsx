@@ -609,22 +609,73 @@ export function LandingPage({ onLoginClick }: LandingPageProps) {
               <h3 className="text-2xl font-bold text-[#1f2024] mt-8 mb-4">
                 {t.seo.servicesTitle}
               </h3>
-              <p>{t.seo.paragraph3}</p>
+              <div className="space-y-4">
+                {t.seo.paragraph3.split('\n\n').map((service, idx) => (
+                  <div key={idx} className="bg-white p-4 rounded-lg border border-gray-200">
+                    {service.split('\n').map((line, lineIdx) => (
+                      <p key={lineIdx} className={lineIdx === 0 ? 'font-bold text-[#1f2024]' : 'text-gray-600'}>
+                        {line}
+                      </p>
+                    ))}
+                  </div>
+                ))}
+              </div>
               
               <h3 className="text-2xl font-bold text-[#1f2024] mt-8 mb-4">
                 {t.seo.coverageTitle}
               </h3>
-              <p>{t.seo.paragraph4}</p>
+              <div className="space-y-3">
+                {t.seo.paragraph4.split('\n\n').map((district, idx) => (
+                  <div key={idx} className="bg-white p-4 rounded-lg border border-gray-200">
+                    {district.split(': ').map((part, partIdx) => (
+                      <span key={partIdx} className={partIdx === 0 ? 'font-bold text-[#1f2024]' : 'text-gray-600'}>
+                        {part}{partIdx === 0 && ': '}
+                      </span>
+                    ))}
+                  </div>
+                ))}
+              </div>
               
               <h3 className="text-2xl font-bold text-[#1f2024] mt-8 mb-4">
                 {t.seo.howToUseTitle}
               </h3>
-              <p>{t.seo.paragraph5}</p>
+              <div className="space-y-4">
+                {t.seo.paragraph5.split('\n\n').map((step, idx) => (
+                  <div key={idx} className="bg-white p-4 rounded-lg border border-gray-200">
+                    {step.split('\n').map((line, lineIdx) => (
+                      <p key={lineIdx} className={lineIdx === 0 ? 'font-bold text-[#fc5123] mb-2' : 'text-gray-600'}>
+                        {line}
+                      </p>
+                    ))}
+                  </div>
+                ))}
+              </div>
               
               <h3 className="text-2xl font-bold text-[#1f2024] mt-8 mb-4">
                 {t.seo.commitmentTitle}
               </h3>
-              <p>{t.seo.paragraph6}</p>
+              <ul className="space-y-3">
+                {t.seo.paragraph6.split('\n\n').map((commitment, idx) => (
+                  <li key={idx} className="flex items-start gap-3 bg-white p-4 rounded-lg border border-gray-200">
+                    <div className="w-6 h-6 rounded-full bg-[#fc5123] flex items-center justify-center shrink-0 mt-0.5">
+                      <svg
+                        className="w-3.5 h-3.5 text-white"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={3}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                    </div>
+                    <span className="text-gray-700">{commitment}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </article>
         </div>

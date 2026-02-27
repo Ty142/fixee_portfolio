@@ -92,3 +92,9 @@
 .animate-hover-scale:active {
   transform: scale(0.98);
 }
+
+/* Highlight class for SEO keywords */
+.highlight {
+  color: #fc5123;
+  font-weight: 600;
+}
