@@ -60,9 +60,9 @@ Get-ChildItem -Path $uiPath -Filter "*.tsx" -Recurse | ForEach-Object {
         Set-Content -Path $file.FullName -Value $content -NoNewline
         $filesFixed++
         $totalReplacements += $fileReplacements
-        Write-Host "✓ Fixed: $($file.Name) ($fileReplacements replacements)" -ForegroundColor Green
+        Write-Host "[OK] Fixed: $($file.Name) - $fileReplacements replacements" -ForegroundColor Green
     } else {
-        Write-Host "○ Skipped: $($file.Name) (no versioned imports found)" -ForegroundColor Gray
+        Write-Host "[SKIP] $($file.Name) - no versioned imports found" -ForegroundColor Gray
     }
 }
 
@@ -76,14 +76,14 @@ Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
 
 if ($filesFixed -gt 0) {
-    Write-Host "✓ All versioned imports have been fixed!" -ForegroundColor Green
+    Write-Host "[SUCCESS] All versioned imports have been fixed!" -ForegroundColor Green
     Write-Host ""
     Write-Host "Next steps:" -ForegroundColor Yellow
     Write-Host "  1. Run 'npm run build' to test the build" -ForegroundColor White
     Write-Host "  2. Commit changes: git add . && git commit -m 'fix: Remove versioned imports'" -ForegroundColor White
     Write-Host "  3. Push to deploy: git push origin main" -ForegroundColor White
 } else {
-    Write-Host "✓ No versioned imports found - your code is already clean!" -ForegroundColor Green
+    Write-Host "[SUCCESS] No versioned imports found - your code is already clean!" -ForegroundColor Green
 }
 
 Write-Host ""
